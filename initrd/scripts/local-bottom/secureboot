@@ -7,7 +7,6 @@ case "${1}" in
 		;;
 esac
 
-mount -o bind /root/lib/modules /lib/modules
 modprobe efivarfs
 mount -t efivarfs efivars /sys/firmware/efi/efivars
 
@@ -15,8 +14,6 @@ if [ ! -e /sys/firmware/efi/efivars/dasboot-d719b2cb-3d3a-4596-a3bc-dad00e67656f
     mkdir /newroot
     mount -o bind /root/chroot /newroot
     mount -o move /newroot /root
-else
-    rm /sys/firmware/efi/efivars/dasboot-d719b2cb-3d3a-4596-a3bc-dad00e67656f
 fi
 
 exit 0
